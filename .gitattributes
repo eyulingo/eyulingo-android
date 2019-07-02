@@ -1,0 +1,5 @@
+*.md linguist-detectable=true
+*.rtf linguist-detectable=true
+*.sql linguist-detectable=true
+*.ps linguist-detectable=true
+*.eps linguist-detectable=true
