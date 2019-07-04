@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    public fun showInfo(v: View) {
+    fun showInfo(v: View) {
         startActivity(Intent(this@MainActivity,com.example.myapplication.ui.login.LoginActivity::class.java))
     }
 }
