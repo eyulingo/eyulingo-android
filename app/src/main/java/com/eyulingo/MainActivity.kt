@@ -13,7 +13,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.View
+import android.widget.TextView
 import com.R
+import okhttp3.*
+import okhttp3.internal.tls.OkHostnameVerifier
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,6 +42,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
+        val helloworldview: TextView = findViewById(R.id.helloworld)
+        helloworldview.setOnClickListener(View.OnClickListener { AsynchronousGet(helloworldview) })
     }
 
     override fun onBackPressed() {
@@ -94,5 +101,39 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun showInfo(v: View) {
         startActivity(Intent(this@MainActivity,com.example.myapplication.ui.login.LoginActivity::class.java))
+    }
+
+
+
+    fun AsynchronousGet(v: View) {
+        var client = OkHttpClient()
+        val request = Request.Builder().url("https://www.baidu.com/").build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call?, e: IOException?) {
+
+                runOnUiThread {
+                    changeText("error", false)
+                }
+
+            }
+
+            override fun onResponse(call: Call?, response: Response?) {
+
+                var string = ""
+                if (response!=null) {
+                    string = response?.body().string()
+                }
+                runOnUiThread {
+
+                        changeText(string, true)
+
+                }
+            }
+        })
+    }
+
+    fun changeText(string: String, flag: Boolean) {
+        val textView = findViewById<TextView>(R.id.helloworld)
+        textView.setText(string)
     }
 }
