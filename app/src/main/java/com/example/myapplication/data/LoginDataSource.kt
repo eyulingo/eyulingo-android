@@ -2,6 +2,8 @@ package com.example.myapplication.data
 
 
 import com.example.myapplication.data.model.LoggedInUser
+import com.google.gson.JsonElement
+import com.google.gson.JsonParser
 import okhttp3.*
 import java.io.IOException
 
@@ -32,6 +34,9 @@ class LoginDataSource {
             var request = Request.Builder().url("http://47.103.15.32:8080/login?username=$username&password=$password").post(requestBody).build()
             var response = client.newCall(request).execute()
 
+            val resString = response.body().string()
+            var res: JsonElement = JsonParser().parse(resString)
+            val status = res.asJsonObject.get("status")
 
 
             val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
