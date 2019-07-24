@@ -18,6 +18,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.eyulingo.R
+import com.eyulingo.ui.main.MainActivity
 import com.eyulingo.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -65,11 +66,13 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
-            }
-            setResult(Activity.RESULT_OK)
 
-            //Complete and destroy login activity once successful
-            finish()
+                setResult(Activity.RESULT_OK)
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+                //Complete and destroy login activity once successful
+                finish()
+            }
         })
 
         username.afterTextChanged {

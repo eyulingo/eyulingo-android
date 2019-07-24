@@ -23,4 +23,18 @@
     <string name="invalid_register_confirm_code">Not a valid confirm code</string>
     <string name="invalid_register_pwd_confirm">Passwords are different</string>
     <string name="send_confirm_failed_toast">Send confirm code failed, please try again.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="bottom_nav_menu_item_search">搜索</string>
+    <string name="bottom_nav_menu_item_store">店铺</string>
+    <string name="bottom_nav_menu_item_mine">我的</string>
+    <string name="bottom_nav_menu_item_orders">订单</string>
+    <string name="bottom_nav_menu_item_cart">购物车</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
